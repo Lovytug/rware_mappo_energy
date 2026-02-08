@@ -1,0 +1,56 @@
+{
+    "environment": {
+        "width": { "type": "int", "range": [20, 30] },
+        "height": { "type": "int", "range": [30, 40] },
+
+        "gates": { 
+            "type": "list", 
+            "count": { "type": "int", "range": [1, 5] },
+            "item": { "type": "coord", "source": "gates_block" }
+        },
+
+        "shelves": { 
+            "type": "list", 
+            "count": { "type": "int", "range": [10, 20] },
+            "item": { "type": "coord", "source": "shelves_block" }
+        },
+
+        "agent": {
+            "count": { "type": "int", "range": [1, 10] },
+            "radius_visible": { "type": "int", "value": 1 }
+        },
+
+        "other": {
+            "msg_bits": { "type": "int", "value": 0 },
+            "max_steps": { "type": "int", "value": 1000 },
+            "max_inactivity_steps": { "type": "int", "value": 1000 },
+            "request_queue_size": { "type": "int", "value": 5 },
+            "reward_type": { "type": "string", "value": "sparse" }
+        }
+    },
+
+    "energy_system": {
+        "charged_rate": { "type": "float", "value": 1 },
+        "charge_reward": { "type": "float", "value": 1 },
+        "bonus_charge_coef_critical_threshold": { "type": "float", "value": 0.2 },
+        "critical_threshold_procent": { "type": "float", "value": 0.2 },
+
+        "stations": {
+            "type": "list", 
+            "count": { "type": "int", "range": [1, 5] },
+            "item": { "type": "coord", "source": "charging_block" }
+        },
+
+        "agent": {
+            "max_energy": { "type": "int", "range": [150, 200] },
+            "depletion_penalty_dead": { "type": "float", "value": 0.5 },
+            "cost_action": {
+                "NOOP": { "type": "float", "value": 0.0 },
+                "LOAD": { "type": "float", "value": 5.0 },
+                "FORWARD": { "type": "float", "value": 1.0 },
+                "LEFT": { "type": "float", "value": 1.0 },
+                "RIGHT": { "type": "float", "value": 1.0 }
+            }
+        }
+    }
+}
