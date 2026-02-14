@@ -1,0 +1,16 @@
+from environments.energy_env.domain.energy_robot import MultiEnergyRobots
+from environments.energy_env.domain.charging_station import MultiChargingStations
+from environments.energy_env.subsystem.storage import EnergyStorageSubsystem, ChargingStorageSubsystem
+from environments.energy_env.extracter_data.energy_robot import EnergyRobotExtracter
+from environments.energy_env.extracter_data.charging_station import ChargingStationExtracter
+
+from environments.base.domain_storage.domain_registry_extracter import DomainExtractorRegistry
+from environments.base.domain_storage.storage_factory import StorageFactory
+
+# регистрация extractors
+DomainExtractorRegistry.register(MultiEnergyRobots, EnergyRobotExtracter)
+DomainExtractorRegistry.register(MultiChargingStations, ChargingStationExtracter)
+
+# регистрация storage
+StorageFactory.register(MultiEnergyRobots, EnergyStorageSubsystem)
+StorageFactory.register(MultiChargingStations, ChargingStorageSubsystem)

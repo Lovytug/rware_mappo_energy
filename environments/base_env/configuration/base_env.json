@@ -1,0 +1,33 @@
+{
+    "width": { "type": "int", "range": [20, 30] },
+    "height": { "type": "int", "range": [30, 40] },
+
+    "gates": { 
+        "mode": "random",
+        "coordinates": [[], []],
+        "type": "list", 
+        "count": { "type": "int", "range": [1, 5] },
+        "item": { "type": "coord" }
+    },
+
+    "shelves": { 
+        "mode": "random",
+        "coordinates": [[], []],
+        "type": "list",
+        "count": { "type": "int", "range": [10, 20] },
+        "item": { "type": "coord" }
+    },
+
+    "agents": {
+        "count": { "type": "int", "range": [1, 10] },
+        "radius_visible": { "type": "int", "value": 1 }
+    },
+
+    "other": {
+        "msg_bits": { "type": "int", "value": 0 },
+        "max_steps": { "type": "int", "value": 1000 },
+        "max_inactivity_steps": { "type": "int", "value": 1000 },
+        "request_queue_size": { "type": "int", "value": 5 },
+        "reward_type": { "type": "string", "value": "sparse" }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "charge_rate": { "type": "float", "value": 1 },
+    "charge_reward": { "type": "float", "value": 1 },
+    "bonus_charge_coef_critical_threshold": { "type": "float", "value": 0.2 },
+    "critical_threshold_procent": { "type": "float", "value": 0.2 },
+
+    "stations": {
+        "mode": "random",
+        "coordinates": [[], []],
+        "type": "list", 
+        "count": { "type": "int", "range": [1, 5] },
+        "item": { "type": "coord" }
+    },
+
+    "agents": {
+        "max_energy": { "type": "int", "range": [150, 200] },
+        "depletion_penalty_dead": { "type": "float", "value": 0.5 },
+        "cost_action": {
+            "NOOP": { "type": "float", "value": 0.0 },
+            "LOAD": { "type": "float", "value": 5.0 },
+            "FORWARD": { "type": "float", "value": 1.0 },
+            "LEFT": { "type": "float", "value": 1.0 },
+            "RIGHT": { "type": "float", "value": 1.0 }
+        }
+    }
+}
