@@ -3,10 +3,11 @@ from __future__ import annotations
 from typing import Union
 from dataclasses import dataclass
 from environments.base.domain_storage.domain import DomainModel
+from environments.base.observer.decor_observe import observe
 
 @dataclass
 class EnergyRobot:
-    id_robot: int
+    id: int
     max_energy: float
     current_energy: float
 
@@ -111,7 +112,7 @@ class MultiEnergyRobots(DomainModel):
     def max_energy(self) -> MaxEnergyView:
         return MaxEnergyView(self._robots)
     
-    @property
+    @observe
     def energies_ratio(self) -> list[float]:
         return [r.current_energy_ratio for r in self._robots]
     

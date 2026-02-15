@@ -21,12 +21,9 @@ class EnergyDynamicSubsystem(EnergySubsystem):
 
             agent = base_env.unwrapped.agents[i]
 
-            if (agent.x, agent.y) in stations.coords:
-                id = stations.coords.index(agent.x, agent.y)
+            if (agent.x, agent.y) in stations.coords_charge_station:
+                id = stations.coords_charge_station.index((agent.x, agent.y))
                 robot.current_energy = min(
                     robot.max_energy,
                     robot.current_energy + stations.charge_rate[id]
                 )
-
-
-        return super().post_step(base_env, env)

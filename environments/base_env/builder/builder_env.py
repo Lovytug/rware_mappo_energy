@@ -1,11 +1,13 @@
 from rware.warehouse import Warehouse
 
-from base_env.extracter_data.warehouse import WarehouseExtracter
-from base_env.builder.builder_layer import BuilderLayer
+from environments.base_env.extracter_data.warehouse import WarehouseExtracter
+from environments.base_env.builder.builder_layer import BuilderLayer
 
 from environments.base.builder.builder_env import BuilderEnv
 
 from read_write_file.reader.base.reader_file import ReaderFile
+
+from environments.base.observer.observer import EnvObserver
 
 
 class BuilderBaseEnv(BuilderEnv):
@@ -16,10 +18,12 @@ class BuilderBaseEnv(BuilderEnv):
 
 
     def build(self, env=None):
-        data = self.reader.read()
+        data = self.reader.read().data
         builder_layer = BuilderLayer(data)
 
         params = WarehouseExtracter().extract(data)
+
+        reg = EnvObserver()
 
         return Warehouse(
             shelf_columns=params.shelf_columns,
@@ -36,4 +40,4 @@ class BuilderBaseEnv(BuilderEnv):
             reward_type=params.reward_type,
 
             layout=builder_layer.build()
-        )
+        ), reg

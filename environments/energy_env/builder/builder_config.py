@@ -22,10 +22,10 @@ class BuilderEpisodeJSON(BuilderConfig):
 
     def build(self, ctx: RuntimeContext):
         self.register.set_context(ctx)
-
+        
         result = {}
         result[self.filename] = self._generate_recursive(self.data)
-        self.writer.save(result, overwrite=True)
+        self.writer.save(result, append=True)
 
 
     def _generate_recursive(self, cfg: dict) -> dict:

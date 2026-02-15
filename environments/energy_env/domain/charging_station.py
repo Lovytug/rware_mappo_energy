@@ -3,11 +3,11 @@ from __future__ import annotations
 from  dataclasses import dataclass
 from typing import Union
 from environments.base.domain_storage.domain import DomainModel
-
+from environments.base.observer.decor_observe import observe
 
 @dataclass
 class ChargingStation:
-    id_charging_station: int
+    id: int
     coord: tuple[int, int]
     charge_rate: float
 
@@ -65,15 +65,15 @@ class MultiChargingStations(DomainModel):
     def stations(self) -> list[ChargingStation]:
         return self._station
     
-    @property
-    def coords(self) -> list[tuple[int, int]]:
+    @observe
+    def coords_charge_station(self) -> list[tuple[int, int]]:
         return [r.coord for r in self._station]
     
     @property
     def coord(self) -> CoordView:
         return CoordView(self._station)
     
-    @property
+    @observe
     def charge_rates(self) -> list[float]:
         return [r.charge_rate for r in self._station]
     

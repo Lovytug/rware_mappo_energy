@@ -7,7 +7,7 @@ class EnvSubsystem(ABC):
     def pre_action(self, actions, base_env, env):
         return actions
     
-    def post_step(self, base_env, env):
+    def post_step(self, action, base_env, env):
         pass
 
     def modify_obs(self, obs, base_env, env):

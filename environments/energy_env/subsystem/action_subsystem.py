@@ -6,16 +6,16 @@ class EnergyActionSubsystem(EnergySubsystem):
 
     after = (EnergyStorageSubsystem, )
 
-    def pre_action(self, action: list[int], base_env, env: EnergyEnv):
+    def pre_action(self, actions: list[int], base_env, env: EnergyEnv):
         
         robots_storage: EnergyStorageSubsystem = env.get(EnergyStorageSubsystem)
         robots = robots_storage.robots
 
         new_actions = []
 
-        for i, action in enumerate(action):
+        for i, action in enumerate(actions):
             if robots[i].is_discharged:
-                new_actions.append(base_env.action_space[0])
+                new_actions.append(0)
             else:
                 new_actions.append(action)
 

@@ -24,7 +24,7 @@ class EnergyObservationSubsystem(EnergySubsystem):
 
             visible = any(
                 abs(ax - sx) + abs(ay - sy) <= base_env.unwrapped.sensor_range
-                for (sx, sy) in stations.coords
+                for (sx, sy) in stations.coords_charge_station
             )
 
             extend_obs = np.concatenate([

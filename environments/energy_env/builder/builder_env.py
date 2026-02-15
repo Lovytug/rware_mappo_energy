@@ -12,10 +12,16 @@ import environments.energy_env.domain.regist.regist_domain_extract
 
 from environments.base.gym_wrapper_env import EnvWrapper
 
+from environments.base.observer.observer import EnvObserver
+
+from read_write_file.reader.base.reader_file import ReaderFile
+
+
 class BuilderEnergyEnv(BuilderEnv):
 
-    def __init__(self):
+    def __init__(self, reader_runs: ReaderFile):
         super().__init__()
+        self.reader = reader_runs
 
     def build(self, env=None):
         if env is None:
@@ -26,16 +32,21 @@ class BuilderEnergyEnv(BuilderEnv):
             MultiChargingStations,
         ]
 
-        storages = StorageFactory.build_storages_from_env(env, domain_classes)
+        data = self.reader.read().data
+        
+        storages, domains = StorageFactory.build_storages_from_env(data, env, domain_classes)
 
-        energy_env = EnergyEnv([
-            storages +
-            [
+        observer = EnvObserver()
+        for domain in domains:
+            observer.register(domain)
+
+        all_list = storages + [
                 action_subsystem.EnergyActionSubsystem(),
                 dynamic_subsystem.EnergyDynamicSubsystem(),
                 observation_subsystem.EnergyObservationSubsystem(),
                 termination_subsystem.EnergyTerminationSubsystem()
             ]
-        ])
+        
+        energy_env = EnergyEnv(all_list)
 
-        return EnvWrapper(env, energy_env)
+        return EnvWrapper(env, energy_env), observer

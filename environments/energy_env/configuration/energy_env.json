@@ -1,6 +1,6 @@
 {
-    "charge_rate": { "type": "float", "value": 1 },
-    "charge_reward": { "type": "float", "value": 1 },
+    "charge_rate": { "type": "float", "value": 1.0 },
+    "charge_reward": { "type": "float", "value": 1.0 },
     "bonus_charge_coef_critical_threshold": { "type": "float", "value": 0.2 },
     "critical_threshold_procent": { "type": "float", "value": 0.2 },
 

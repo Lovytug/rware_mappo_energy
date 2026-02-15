@@ -10,8 +10,8 @@ class DomainExtractorRegistry:
         cls._registry[domain_cls] = extractor_cls
 
     @classmethod
-    def extract(cls, domain_cls: type[DomainModel], env: Any):
+    def extract(cls, domain_cls: type[DomainModel], data, env: Any):
         extractor_cls = cls._registry.get(domain_cls)
         if extractor_cls is None:
             raise ValueError(f"No extractor registered for {domain_cls}")
-        return extractor_cls.extract(env)
+        return extractor_cls.extract(data, env)

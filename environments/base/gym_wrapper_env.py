@@ -13,7 +13,7 @@ class EnvWrapper(gym.Wrapper):
 
         obs, reward, terminated, truncated, info = self.env.step(actions)
 
-        self.created_env.post_step(self.env)
+        self.created_env.post_step(actions, self.env)
 
         obs = self.created_env.modify_obs(obs, self.env)
         reward = self.created_env.modify_reward(reward, self.env)

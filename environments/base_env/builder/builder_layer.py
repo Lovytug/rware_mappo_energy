@@ -1,4 +1,4 @@
-from base_env.extracter_data.layer import LayersParamsExtracter
+from environments.base_env.extracter_data.layer import LayersParamsExtracter
 
 
 class BuilderLayer:
