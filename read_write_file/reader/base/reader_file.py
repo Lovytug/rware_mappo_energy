@@ -1,5 +1,12 @@
 from pathlib import Path
+from dataclasses import dataclass
 from abc import ABC, abstractmethod
+
+@dataclass
+class ReadResult:
+    data: dict
+    filename: str
+    path: str
 
 class ReaderFile(ABC):
     """
@@ -13,5 +20,5 @@ class ReaderFile(ABC):
         self.path = path_file
 
     @abstractmethod
-    def read(self):
+    def read(self) -> ReadResult:
         pass

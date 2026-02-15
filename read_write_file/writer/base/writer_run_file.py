@@ -10,7 +10,7 @@ from util.global_var import NAME_RUN_CONFIG_EVER_EPISODE
 class WriterFileForRun(WriterFile, ABC):
 
     def __init__(self):
-        super().__init__()
+        super().__init__("")
 
         run = "run"
 
