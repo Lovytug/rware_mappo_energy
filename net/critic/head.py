@@ -3,7 +3,7 @@ from torch import nn
 
 class PredictionHeadCritic(FeatureModule):
     
-    def __init__(self, input_embedding_dim, output_dim):
+    def __init__(self, input_embedding_dim, output_dim = 1):
         super().__init__()
 
         self._input_dim = input_embedding_dim

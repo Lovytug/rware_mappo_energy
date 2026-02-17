@@ -1,7 +1,7 @@
 from net.base.feature_module import FeatureModule
 from net.critic.encode import EntityEncoder, SetEncoder
 from torch import nn
-from features_env.base.features_batch import FeatureBatch
+from environments.base.features_env.base.features_batch import FeatureBatch
 import torch
 
 class EntityPipeline(FeatureModule):

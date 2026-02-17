@@ -7,5 +7,5 @@ CONFIGURATION_DIR = PROJECT_ROOT / "configuration"
 
 # Конкретный набор конфигов
 CONFIG_EPISODE_RUN = (
-    PROJECT_ROOT / "runs"
+    PROJECT_ROOT / "run"
 )

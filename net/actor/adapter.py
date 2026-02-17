@@ -1,5 +1,6 @@
 from net.base.feature_module import FeatureModule
 from torch import nn
+import torch
 
 class FeaturesAdapterActor(FeatureModule):
 
@@ -19,4 +20,6 @@ class FeaturesAdapterActor(FeatureModule):
         return self._out_dim
     
     def forward(self, x):
+        if not isinstance(x, torch.Tensor):
+            x = torch.tensor(x, dtype=torch.float32)
         return self.adapter(x)

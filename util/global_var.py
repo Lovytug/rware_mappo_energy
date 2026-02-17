@@ -1,3 +1,1 @@
-NAME_RUNS_CONFIG = "config_epis_000.json"
-
-NAME_ORIGIN_CONFIG = 'spec_environment.json'
+NAME_RUN_CONFIG_EVER_EPISODE = "config_epis_000"

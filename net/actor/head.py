@@ -2,7 +2,7 @@ from net.base.feature_module import FeatureModule
 from torch import nn
 
 class PredictionHeadActor(FeatureModule):
-    def __init__(self, in_embending_dim, output_dim):
+    def __init__(self, in_embending_dim, output_dim=1):
         super().__init__()
 
         self._in_dim = in_embending_dim
